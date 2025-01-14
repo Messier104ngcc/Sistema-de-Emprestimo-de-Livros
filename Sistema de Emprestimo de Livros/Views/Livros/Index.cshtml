@@ -1,0 +1,118 @@
+﻿@using Sistema_de_Emprestimo_de_Livros.Models
+@model IEnumerable<LivrosModel>
+
+
+@section Styles {
+    <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/sb-admin-2.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/all.min.css" asp-append-version="true" />
+}
+
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Gerenciamento de Livros</h1>
+    <p class="mb-4">
+		Tabela resposánvel pelo gerecimaneto de emprestimos de livros, aqui pode ser cadastrado , editado, e excluido um registro.
+    </p>
+
+
+    <div class="btn-box d-flex justify-content-between align-items-center mb-3">
+        <h3>Cadastro de livros</h3>
+    </div>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Registros</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Autor</th>
+                            <th>Genero</th>
+                            <th>Quantidade em Estoque</th>
+                            <th>Data de cadastro</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (Model != null)
+                        {
+                            @if (Model.Count() > 0)
+                            {
+                                @foreach (var livro in Model)
+                                {
+
+                                    <tr>
+                                        @if (livro.Capa != null)
+                                        {
+                                            <td>
+                                                <img src="imagem/@livro.Capa" style="width:50px; height: 50px" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                            </td>
+                                        }
+
+                                        <td><i class="bi bi-people"></i>@livro.Titulo</td>
+                                        <td>@livro.Autor</td>
+                                        <td>@livro.Genero</td>
+                                        <td><i class="bi bi-envelope-at"></i>@livro.QuantidadeEstoque</td>
+                                        <td><i class="bi bi-calendar"></i>@livro.DataCadastro</td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-action="Detalhes" asp-controller="Livro" asp-route-id="@livro.Id"><i class="bi bi-file-earmark-zip"></i>Detalhes</a>
+                                            <a class="btn btn-info" asp-action="Editar" asp-controller="Livro" asp-route-id="@livro.Id"><i class="bi bi-pencil"></i>Editar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="6" class="text-center">Sem livros registrados!</td></tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="btn-box d-flex justify-content-end align-items-center mb-3">      
+        <a class="btn btn-success" asp-action="Cadastrar" asp-controller="Livros"><i class="bi bi-plus-circle"></i>  Cadastrar novo livro</a>
+    </div>
+
+</div>
+
+
+<script src="/js/datatables-demo.js" asp-append-version="true"></script>
+<script src="/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+<script src="/js/sb-admin-2.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.easing.min.js" asp-append-version="true"></script>
+<script src="/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.min.js" asp-append-version="true"></script>
