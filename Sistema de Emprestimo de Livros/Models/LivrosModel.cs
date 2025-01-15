@@ -7,10 +7,10 @@ namespace Sistema_de_Emprestimo_de_Livros.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string Capa { get; set; } = string.Empty;
+		[Required]
+		public string Capa { get; set; }
 
-        [Required]
+		[Required]
         public string ISBN { get; set; } = string.Empty;
 
         [Required]

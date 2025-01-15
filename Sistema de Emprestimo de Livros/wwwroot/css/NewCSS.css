@@ -1,0 +1,20 @@
+﻿.text-truncate-container {
+    position: relative;
+}
+
+.text-truncate {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-complete {
+    display: block;
+}
+
+#moreText {
+    display: none; 
+}
+
+

@@ -28,6 +28,9 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
 
             string folderImg = _caminhoServidor + "\\img\\";
 
+            var arquivo = nomeCaminho;
+            var caminhoRelativo = "/img/" + arquivo;
+
             // condição para verificar  se há alguma pasta criada para salvar aquivos de imagem.
             if (!Directory.Exists(folderImg)) 
             {
@@ -41,9 +44,9 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
             }
 
             var livro = new LivrosModel
-			{
+		{
 				Titulo = livroCriacaoDto.Titulo,
-				Capa = folderImg,
+				Capa = caminhoRelativo,
 				Autor = livroCriacaoDto.Autor,
 				Descricao = livroCriacaoDto.Descricao,
 				QuantidadeEstoque = livroCriacaoDto.QuantidadeEstoque,
@@ -54,7 +57,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
 
             _context.Add(livro);
             await _context.SaveChangesAsync();
-
+			
             return livro;
 		}
 

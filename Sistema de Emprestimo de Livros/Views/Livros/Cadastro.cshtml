@@ -1,5 +1,5 @@
 ﻿@using Sistema_de_Emprestimo_de_Livros.Dto.Livro
-@model LivroCriacaoDto 
+@model LivroCriacaoDto
 
 @section Styles {
 	<link rel="stylesheet" href="/css/formCadastrolivros.css" asp-append-version="true" />
@@ -11,7 +11,7 @@
 	<h1 class="h3 mb-2 text-gray-800">Fromulário de cadastro Livros</h1>
 
 	<div class="card shadow mb-4 row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center border shadow-lg">
-		<div class="row">			
+		<div class="row">
 			<div class="col m-3">
 				<form method="post" asp-action="Cadastrar" asp-controller="Livros" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 					<div class="col">
@@ -67,18 +67,18 @@
 								Digite um codigo ISBN!
 							</div>
 						</div>
-					</div>					
+					</div>
 					<div class="col-mb-12 mb-3">
 						<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Descrição</label>
 						<div class="col-sm">
 							<textarea class="form-control" asp-for="Descricao" id="exampleFormControlTextarea1" rows="3" maxlength="9999"></textarea>
 						</div>
-					</div>																			
-					<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2 mb-lg-3">
-						<button class="btn btn-primary" type="submit"><i class="bi bi-wallet2 mx-2"></i>Cadastrar</button>
-						<button type="button" class="btn btn-danger">
-							<a class="text-light text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
-						</button>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2 mb-lg-3">
+							<button class="btn btn-primary" type="submit"><i class="bi bi-wallet2 mx-2"></i>Cadastrar</button>
+							<button type="button" class="btn btn-danger">
+								<a class="text-light text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>

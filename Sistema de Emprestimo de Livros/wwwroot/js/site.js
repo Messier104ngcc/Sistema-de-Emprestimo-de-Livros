@@ -1,44 +1,27 @@
-﻿//const inputFile = document.querySelector("#Imagem");
-
-//inputFile.addEventListener("change", function (e) {
-//    const inputTarget = e.target;
-//    const file = inputTarget.files[0];
-
-//    if (file) {
-//        const reader = new FileReader();
-
-//        reader.addEventListener("load", function (e) {
-//            const readerTarget = e.target;
-//            const img = document.querySelector("#img");
-//            img.src = readerTarget.result;
-
-//            // const figcaption = document.querySelector("#figcaption");
-//            // figcaption.innerHTML = file.name;
-//        });
-
-//        reader.readAsDataURL(file);
-//    }
-//});
-
+﻿
+// Scrip para foto da capa aparecer no campo de seleção de arquivos no formulario de cadastro de livros.
 document.addEventListener('DOMContentLoaded', function () {
-    const inputFile = document.querySelector("#Imagem");
+const inputFile = document.querySelector("#Imagem");
     if (inputFile) {
-        inputFile.addEventListener("change", function (e) {
-            const inputTarget = e.target;
-            const file = inputTarget.files[0];
+inputFile.addEventListener("change", function (e) {
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
 
-            if (file) {
-                const reader = new FileReader();
+    if (file) {
+        const reader = new FileReader();
 
-                reader.addEventListener("load", function (e) {
-                    const readerTarget = e.target;
-                    const img = document.querySelector("#img");
-                    img.src = readerTarget.result;
-                });
+        reader.addEventListener("load", function (e) {
+            const readerTarget = e.target;
+            const img = document.querySelector("#img");
+            img.src = readerTarget.result;
 
-                reader.readAsDataURL(file);
-            }
+            // const figcaption = document.querySelector("#figcaption");
+            // figcaption.innerHTML = file.name;
         });
+
+        reader.readAsDataURL(file);
+    }
+});
     } else {
         console.error("Elemento não encontrado: #Imagem");
     }
@@ -46,14 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+// Scrip dos campos do formulario de cadastro de livros para verificar se foi preenchidos ou não.
 (() => {
     'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  
     const forms = document.querySelectorAll('.needs-validation')
 
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -65,5 +46,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }, false)
     })
 })()
+
+
+
+// Scrip para truncar os textos das descrições dos livros na tabela
+
+function toggleText(event, id) {
+    const curta = document.getElementById(`descricaoCurta-${id}`);
+    const completa = document.getElementById(`descricaoCompleta-${id}`);
+    const btn = event.target;
+
+    if (curta.classList.contains('d-none')) {
+        curta.classList.remove('d-none');
+        completa.classList.add('d-none');
+        btn.textContent = 'Ver mais';
+    } else {
+        curta.classList.add('d-none');
+        completa.classList.remove('d-none');
+        btn.textContent = 'Ver menos';
+    }
+}
+
 
 

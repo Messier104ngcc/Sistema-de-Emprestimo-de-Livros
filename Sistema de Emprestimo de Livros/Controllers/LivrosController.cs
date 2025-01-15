@@ -39,7 +39,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
             }
         }
      
-        public IActionResult Cadastrar()
+        public IActionResult Cadastro()
         {
             return View();
         }
