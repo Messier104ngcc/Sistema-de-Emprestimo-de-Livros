@@ -5,6 +5,9 @@ namespace Sistema_de_Emprestimo_de_Livros.Dto.Livro
     public class LivroCriacaoDto
     {
         [Required]
+        public string Capa { get; set; } = string.Empty;
+
+        [Required]
         public string ISBN { get; set; } = string.Empty;
 
         [Required]

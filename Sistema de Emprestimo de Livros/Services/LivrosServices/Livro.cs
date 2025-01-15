@@ -41,7 +41,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
             }
 
             var livro = new LivrosModel
-			{
+		{
 				Titulo = livroCriacaoDto.Titulo,
 				Capa = folderImg,
 				Autor = livroCriacaoDto.Autor,
@@ -54,7 +54,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
 
             _context.Add(livro);
             await _context.SaveChangesAsync();
-
+			
             return livro;
 		}
 
