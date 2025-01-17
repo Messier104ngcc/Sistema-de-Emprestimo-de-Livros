@@ -3,85 +3,107 @@
 
 @section Styles {
 	<link rel="stylesheet" href="/css/formCadastrolivros.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
 }
 
-<div class="container-fluid">
 
-	<!-- Page Heading -->
-	<h1 class="h3 mb-2 text-gray-800">Fromulário de cadastro Livros</h1>
+@if (TempData["MensagemSucesso"] != null)
+{
+	<div class="alert alert-success text-dark" role="alert">
+		@TempData["MensagemSucesso"]
+	</div>
+}
 
-	<div class="card shadow mb-4 row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center border shadow-lg">
-		<div class="row">
-			<div class="col m-3">
-				<form method="post" asp-action="Cadastrar" asp-controller="Livros" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-			<div class="col">
-				<div class="text-center">
-					<div class="form-group">
-						<label for="ImageFile">
-							<img id="img" style="width:200px; height:250px" />
-							<figcaption id="figcaption">
-							</figcaption>
-						</label>
-						<div class="mb-1">
-							<label class="form-label mt-3">Capa:</label>
-									<input type="file" id="Imagem" name="foto" class="form-control shadow-none">
+@if (TempData["MensagemErro"] != null)
+{
+	<div class="alert alert-danger text-dark" role="alert">
+		@TempData["MensagemErro"]
+	</div>
+}
+
+@if (TempData["MensagemInfo"] != null)
+{
+	<div class="alert alert-warning" role="alert">
+		@TempData["MensagemInfo"]
+	</div>
+}
+
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 m-5 text-gray-800">Fromulário de cadastro Livros</h1>
+
+<div class="card shadow mb-4 row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center border shadow-lg m-5">
+	<div class="row">
+		<div class="col m-3">
+			<form method="post" asp-action="Cadastrar" asp-controller="Livros" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+				<div class="col">
+					<div class="text-center">
+						<div class="form-group">
+							<label for="ImageFile">
+								<img id="img" style="width:200px; height:250px" />
+							</label>
+							<div class="mb-1">
+								<label class="form-label mt-3">Capa:</label>
+								<input type="file" id="Imagem" name="foto" class="shadow-none">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-					<div class="col-md-4 p-0">
-						<label for="validationCustom01" class="form-label">Titulo</label>
-						<input type="text" asp-for="Titulo" class="form-control" id="validationCustom01" required>
-						<div class="invalid-feedback">
-							Digite um Titulo!
-						</div>
-						<div class="col-md-6 mt-4">
+				<div class="col-md-4 p-0">
+					<label for="validationCustom01" class="form-label">Titulo</label>
+					<input type="text" asp-for="Titulo" class="form-control" id="validationCustom01" required>
+					<div class="invalid-feedback">
+						Digite um Titulo!
+					</div>
+					<div class="col-md-6 mt-4">
 						<label for="validationCustom02" class="form-label">Data de publicação</label>
-							<input type="date" asp-for="AnoPublicacao" class="form-control" id="validationCustom03" required>
+						<input type="date" asp-for="AnoPublicacao" class="form-control" id="validationCustom03" required>
 						<div class="invalid-feedback">
 							Selecione uma Data!
 						</div>
 					</div>
-						<div class="col-md-6 mt-4">
-							<label for="inputNumero" class="form-label">Disponivel</label>
-							<input type="number" asp-for="QuantidadeEstoque" class="form-control" id="inputNumero">
-						</div>
-						</div>
-					<div class="col-md-4">
-						<label for="validationCustom02" class="form-label">Autor</label>
-						<input type="text" asp-for="Autor" class="form-control" id="validationCustom02" required>
+					<div class="col-md-6 mt-4">
+						<label for="validationCustom06" class="form-label">Disponivel</label>
+						<input type="number" asp-for="QuantidadeEstoque" class="form-control" id="validationCustom06" required>
 						<div class="invalid-feedback">
-							Digite um autor!
+							Quantidade em estoque!
+						</div>
 					</div>
-						<div class="col-md-6 mt-4">
+				</div>
+				<div class="col-md-4">
+					<label for="validationCustom02" class="form-label">Autor</label>
+					<input type="text" asp-for="Autor" class="form-control" id="validationCustom02" required>
+					<div class="invalid-feedback">
+						Digite um autor!
+					</div>
+					<div class="col-md-6 mt-4">
 						<label for="validationCustom01" class="form-label">Genero</label>
-							<input type="text" asp-for="Genero" class="form-control" id="validationCustom04" required>
+						<input type="text" asp-for="Genero" class="form-control" id="validationCustom04" required>
 						<div class="invalid-feedback">
 							Digite um genero do livro!
 						</div>
 					</div>
-						<div class="col-md-6 mt-4">
+					<div class="col-md-6 mt-4">
 						<label for="validationCustom05" class="form-label">ISBN</label>
-							<input type="text" asp-for="ISBN" class="form-control" id="validationCustom05" required>
+						<input type="text" asp-for="ISBN" class="form-control" id="validationCustom05" required>
 						<div class="invalid-feedback">
 							Digite um codigo ISBN!
 						</div>
-						</div>
 					</div>
-					<div class="col-mb-12 mb-3">
-						<label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Descrição</label>
-						<div class="col-sm">
-							<textarea class="form-control" asp-for="Descricao" id="exampleFormControlTextarea1" rows="3" maxlength="9999"></textarea>
-						</div>
-						<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2 mb-lg-3">
-							<button class="btn btn-primary" type="submit"><i class="bi bi-wallet2 mx-2"></i>Cadastrar</button>
-							<button type="button" class="btn btn-danger">
-								<a class="text-light text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
-							</button>
-						</div>
+				</div>
+				<div class="col-mb-12 mb-3">
+					<label for="validationCustom07" class="col-sm-2 col-form-label">Descrição</label>
+					<div class="col-sm">
+						<textarea class="form-control" asp-for="Descricao" id="validationCustom07" rows="3" maxlength="9999" required></textarea>
 					</div>
-				</form>
-			</div>
+					<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2 mb-lg-3">
+						<button class="btn btn-primary" type="submit"><i class="bi bi-wallet2 mx-2"></i>Cadastrar</button>
+						<button type="button" class="btn btn-danger">
+							<a class="text-light text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
+						</button>
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

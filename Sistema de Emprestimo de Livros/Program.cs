@@ -1,8 +1,10 @@
 
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Sistema_de_Emprestimo_de_Livros.Data;
 using Sistema_de_Emprestimo_de_Livros.Logs_System;
+using Sistema_de_Emprestimo_de_Livros.Respository.Service;
 using Sistema_de_Emprestimo_de_Livros.Services.LivrosServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,8 @@ builder.Services.AddScoped<ILogs, Logs>();
 //builder.Services.AddScoped<ISessao, Sessao>();
 //builder.Services.AddScoped<IEmprestimoInterface, EmprestimoService>();
 //builder.Services.AddScoped<IRelatorioInterface, RelatorioService>();
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 

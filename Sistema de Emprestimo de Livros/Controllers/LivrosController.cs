@@ -49,40 +49,50 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
         {
 			try
 			{
-                if (livrosDto != null) 
+                if (foto != null)
                 {
-                    if (ModelState.IsValid)
+                    if (livrosDto != null)
                     {
-                        if (!_livro.VerificarCadastro(livrosDto))
+                        if (ModelState.IsValid)
                         {
-                            return View(livrosDto);
+                            if (!_livro.VerificarCadastro(livrosDto))
+                            {
+                                TempData["MensagemErro"] = "Código ISBN já cadastrado!";
+                                return View("Cadastro");
+                            }
+
+                            var livro = await _livro.Cadastrar(livrosDto, foto);
+
+                            TempData["MensagemSucesso"] = "Cadastro realizado com sucesso!";
+                            return RedirectToAction("Index");
                         }
-
-                        var livro = await _livro.Cadastrar(livrosDto, foto);
-
-                        return View("Index");
+                        else
+                        {							
+							return View("Cadastro");
+                        }
                     }
                     else
                     {
-                        return View(livrosDto);
+						return View("Cadastro");
                     }
                 }
-                else
+                else 
                 {
-                    return View(livrosDto);
-                }
+					TempData["MensagemErro"] = "Inclua uma imagem de capa!";
+					return View("Cadastro");
+				}
 
 			}
 			catch (SqlException ex)
 			{
 				_logs.RegistrarLogDeExcecao(ex);
-				TempData["WarningMessage"] = "Erro ao conectar ao banco de dados. Verifique a conexão e tente novamente.";
+				TempData["MensagemInfo"] = "Erro ao conectar ao banco de dados. Verifique a conexão e tente novamente.";
 				return View("Index");
 			}
 			catch (Exception ex)
 			{
 				_logs.RegistrarLogDeExcecao(ex);
-				TempData["WarningMessage"] = "Erro inesperado. Contate o suporte.";
+				TempData["MensagemErro"] = "Erro inesperado. Contate o suporte.";
 				return View("Index");
 			}
 		}
