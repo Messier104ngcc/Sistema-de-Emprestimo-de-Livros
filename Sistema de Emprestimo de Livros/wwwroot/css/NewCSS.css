@@ -18,3 +18,12 @@
 }
 
 
+/*CSS tela Detalhes.*/
+
+
+#colum {
+    flex-direction: row;
+}
+
+
+

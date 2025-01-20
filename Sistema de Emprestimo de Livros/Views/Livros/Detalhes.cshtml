@@ -1,0 +1,56 @@
+﻿
+@using Sistema_de_Emprestimo_de_Livros.Models
+@model LivrosModel
+
+
+
+@section Styles {
+	<link rel="stylesheet" href="/css/formCadastrolivros.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+}
+
+
+<!-- Page Heading -->
+<h1 class="h3 mb-1 m-5 text-gray-800">Detalhes do Livro</h1>
+
+<div class="card shadow mt-2 row p-0 pe-lg-0 pt-lg-5 border shadow-lg m-5" style="background-color:  #F8F0E2">
+	<div class="row">
+		<div class="col-lg-3 m-3">
+            <div class="col">
+                <img src="@Model.Capa" class="img-fluid">
+            </div>          
+        </div>
+        <div class="col-lg-8">
+            <h4 class="mt-4">
+                @Model.Titulo / @Model.Autor
+            </h4>
+            <br />
+            <h5 class="H5">
+                Ano de publicação : @Model.AnoPublicacao.ToString("dd/MM/yyyy")
+            </h5>
+            <p class="lead">
+                ​@Model.Descricao
+            </p>
+            <br />
+            <p class="lead">
+				Codigo ISBN : @Model.ISBN
+			</p>
+            <p class="lead">
+				Data de Cadastro : @Model.DataCadastro
+			</p>
+            <p class="lead">
+                Data de Alteração : @Model.DataAlteracao
+            </p>
+            <p class="lead">
+                Quantidade em Estoque : @Model.QuantidadeEstoque
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5 mb-lg-3">
+                <button type="button" class="btn" style="background-color:  #E2CDA5 ">
+                    <a class="text-dark text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
+                </button>
+            </div>
+        </div>
+	</div>
+</div>
+
+

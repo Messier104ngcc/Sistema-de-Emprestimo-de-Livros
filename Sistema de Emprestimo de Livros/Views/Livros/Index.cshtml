@@ -34,18 +34,18 @@
 
 
 <div class="btn-box d-flex justify-content-between align-items-center mb-3">
-	<h3>Cadastro de livros</h3>
+	<h3 class="text-black">Cadastro de livros</h3>
 </div>
 
 
 
 <div class="card shadow mb-4">
-	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">Registros</h6>
+	<div class="card-header py-3" style="background-color:  #F8F0E2">
+		<h6 class="m-0 font-weight-bold text-black">Registros</h6>
 	</div>
-	<div class="card-body overflow-auto" style="max-height: 650px;">
+	<div class="card-body overflow-auto" style="max-height: 650px; background-color:  #F8F0E2">
 		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+			<table class="table table-bordered text-black" id="dataTable livros" width="100%" cellspacing="0">
 				<thead>
 					<tr >
 						<th class="text-nowrap" style="width: 10%">Capa</th>
@@ -93,7 +93,7 @@
 											<span class="text-complete d-none" id="descricaoCompleta-@livro.Id">
 												@livro.Descricao
 											</span>
-											<button class="btn-info" onclick="toggleText(event, @livro.Id)">
+											<button class="btn p-1 text-light" onclick="toggleText(event, @livro.Id)" style=" background-color:#1F2744 ">
 												Ver mais
 											</button>
 										</div>
@@ -102,8 +102,8 @@
 									<td class="text-nowrap"><i class="bi bi-calendar mx-2"></i>@livro.DataCadastro</td>
 
 									<td class="text-nowrap">
-										<a class="btn btn-warning" asp-action="Detalhes" asp-controller="Livro" asp-route-id="@livro.Id"><i class="bi bi-file-earmark-zip mx-2"></i>Detalhes</a>
-										<a class="btn btn-info" asp-action="Editar" asp-controller="Livro" asp-route-id="@livro.Id"><i class="bi bi-pencil mx-2"></i>Editar</a>
+										<a class="btn text-dark" asp-action="Detalhes" asp-controller="Livros" asp-route-id="@livro.Id" style="background-color:  #E2CDA5 "><i class="bi bi-file-earmark-zip mx-2"></i>Detalhes</a>
+										<a class="btn text-light" asp-action="Editar" asp-controller="Livros" asp-route-id="@livro.Id" style="background-color:#1F2744 "><i class="bi bi-pencil mx-2"></i>Editar</a>
 									</td>
 								</tr>
 							}
@@ -119,8 +119,8 @@
 	</div>
 </div>
 
-<div class="btn-box d-flex justify-content-end align-items-center">
-	<a class="btn btn-success" asp-action="Cadastro" asp-controller="Livros"><i class="bi bi-plus-circle mx-2"></i>Cadastrar novo livro</a>
+<div class="btn-box d-flex justify-content-end align-items-center" >
+	<a class="btn text-light" asp-action="Cadastro" asp-controller="Livros" style="background-color:#1F2744 "><i class="bi bi-plus-circle mx-2"></i>Cadastrar novo livro</a>
 </div>
 
 

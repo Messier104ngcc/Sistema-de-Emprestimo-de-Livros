@@ -1,34 +1,36 @@
 ﻿
 $(document).ready(function () {
 
-    //$('#usuarios').DataTable({
-    //    "ordering": true,
-    //    "paging": true,
-    //    "searching": true,
-    //    "oLanguage": {
-    //        "sEmptyTable": "Nenhum registro encontrado na tabela",
-    //        "sInfo": "Mostrar _START_ até _END_ de _TOTAL_ registros",
-    //        "sInfoEmpty": "Mostrar 0 até 0 de 0 Registros",
-    //        "sInfoFiltered": "(Filtrar de _MAX_ total registros)",
-    //        "sInfoPostFix": "",
-    //        "sInfoThousands": ".",
-    //        "sLengthMenu": "Mostrar _MENU_ registros por pagina",
-    //        "sLoadingRecords": "Carregando...",
-    //        "sProcessing": "Processando...",
-    //        "sZeroRecords": "Nenhum registro encontrado",
-    //        "sSearch": "Pesquisar",
-    //        "oPaginate": {
-    //            "sNext": "Proximo",
-    //            "sPrevious": "Anterior",
-    //            "sFirst": "Primeiro",
-    //            "sLast": "Ultimo"
-    //        },
-    //        "oAria": {
-    //            "sSortAscending": ": Ordenar colunas de forma ascendente",
-    //            "sSortDescending": ": Ordenar colunas de forma descendente"
-    //        }
-    //    }
-    //});
+    getDatatable('#livros');
+
+    $(id).datatable({
+        "ordering": true,
+        "paging": true,
+        "searching": true,
+        "olanguage": {
+            "semptytable": "nenhum registro encontrado na tabela",
+            "sinfo": "mostrar _start_ até _end_ de _total_ registros",
+            "sinfoempty": "mostrar 0 até 0 de 0 registros",
+            "sinfofiltered": "(filtrar de _max_ total registros)",
+            "sinfopostfix": "",
+            "sinfothousands": ".",
+            "slengthmenu": "mostrar _menu_ registros por pagina",
+            "sloadingrecords": "carregando...",
+            "sprocessing": "processando...",
+            "szerorecords": "nenhum registro encontrado",
+            "ssearch": "pesquisar",
+            "opaginate": {
+                "snext": "proximo",
+                "sprevious": "anterior",
+                "sfirst": "primeiro",
+                "slast": "ultimo"
+            },
+            "oaria": {
+                "ssortascending": ": ordenar colunas de forma ascendente",
+                "ssortdescending": ": ordenar colunas de forma descendente"
+            }
+        }
+    });
 
     // Scrip para o desaparecimento das mensagem de erro, sucesso e lert.
     setTimeout(function () {

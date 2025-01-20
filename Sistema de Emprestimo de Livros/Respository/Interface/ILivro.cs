@@ -10,5 +10,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
         bool VerificarCadastro(LivroCriacaoDto livroCriacao);
 
         Task<LivrosModel> Cadastrar(LivroCriacaoDto livroCriacaoDto, IFormFile foto);
+
+        Task<LivrosModel> BuscarLivroID(int? id);
     }
 }

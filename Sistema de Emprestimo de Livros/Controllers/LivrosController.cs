@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Sistema_de_Emprestimo_de_Livros.Dto.Livro;
 using Sistema_de_Emprestimo_de_Livros.Logs_System;
 using Sistema_de_Emprestimo_de_Livros.Models;
+using Sistema_de_Emprestimo_de_Livros.Respository.Service;
 using Sistema_de_Emprestimo_de_Livros.Services.LivrosServices;
 
 namespace Sistema_de_Emprestimo_de_Livros.Controllers
@@ -43,6 +44,33 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
         {
             return View();
         }
+
+        public async Task<ActionResult> Detalhes(int id) 
+        {           
+			try
+			{
+				if (id != null)
+				{
+					var livros = await _livro.BuscarLivroID(id);
+					return View(livros);
+				}
+
+			}
+			catch (SqlException ex)
+			{
+				_logs.RegistrarLogDeExcecao(ex);
+				TempData["MensagemInfo"] = "Erro ao conectar ao banco de dados. Verifique a conexão e tente novamente.";
+				return RedirectToAction("Index");
+			}
+			catch (Exception ex)
+			{
+				_logs.RegistrarLogDeExcecao(ex);
+				TempData["MensagemErro"] = "Erro inesperado. Contate o suporte.";
+				return RedirectToAction("Index");
+			}			
+
+            return RedirectToAction("Index");
+		}
 
         [HttpPost]
         public async Task<ActionResult> Cadastrar(LivroCriacaoDto livrosDto, IFormFile foto)

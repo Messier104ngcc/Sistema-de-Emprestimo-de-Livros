@@ -68,5 +68,13 @@ namespace Sistema_de_Emprestimo_de_Livros.Respository.Service
             return true;
 
         }
-    }
+
+		
+		public async Task<LivrosModel> BuscarLivroID(int? id)
+		{
+			var livro = await _context.Livros.FirstOrDefaultAsync(l => l.Id == id);
+
+			return livro;
+		}
+	}
 }
