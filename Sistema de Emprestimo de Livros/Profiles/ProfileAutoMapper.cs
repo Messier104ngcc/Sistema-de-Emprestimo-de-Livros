@@ -10,6 +10,8 @@ namespace Sistema_de_Emprestimo_de_Livros.Profiles
 		public ProfileAutoMapper()
 		{
 			CreateMap<LivroCriacaoDto, LivrosModel>();
+			CreateMap<LivrosModel, LivroEdicaoDto>();
+			CreateMap<LivroEdicaoDto, LivrosModel>();
 		}
 	}
 }

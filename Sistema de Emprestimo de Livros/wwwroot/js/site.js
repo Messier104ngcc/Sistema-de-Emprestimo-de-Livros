@@ -1,37 +1,6 @@
 ﻿
 $(document).ready(function () {
-
-    getDatatable('#livros');
-
-    $(id).datatable({
-        "ordering": true,
-        "paging": true,
-        "searching": true,
-        "olanguage": {
-            "semptytable": "nenhum registro encontrado na tabela",
-            "sinfo": "mostrar _start_ até _end_ de _total_ registros",
-            "sinfoempty": "mostrar 0 até 0 de 0 registros",
-            "sinfofiltered": "(filtrar de _max_ total registros)",
-            "sinfopostfix": "",
-            "sinfothousands": ".",
-            "slengthmenu": "mostrar _menu_ registros por pagina",
-            "sloadingrecords": "carregando...",
-            "sprocessing": "processando...",
-            "szerorecords": "nenhum registro encontrado",
-            "ssearch": "pesquisar",
-            "opaginate": {
-                "snext": "proximo",
-                "sprevious": "anterior",
-                "sfirst": "primeiro",
-                "slast": "ultimo"
-            },
-            "oaria": {
-                "ssortascending": ": ordenar colunas de forma ascendente",
-                "ssortdescending": ": ordenar colunas de forma descendente"
-            }
-        }
-    });
-
+        
     // Scrip para o desaparecimento das mensagem de erro, sucesso e lert.
     setTimeout(function () {
         $(".alert").fadeOut("slow", function () {
@@ -114,5 +83,13 @@ function toggleText(event, id) {
 
 
 
+// tooltip icones
+
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
 
 

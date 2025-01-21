@@ -12,5 +12,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Services.LivrosServices
         Task<LivrosModel> Cadastrar(LivroCriacaoDto livroCriacaoDto, IFormFile foto);
 
         Task<LivrosModel> BuscarLivroID(int? id);
-    }
+
+		Task<LivrosModel> Editar(LivroEdicaoDto livroEdicaoDto, IFormFile foto);
+	}
 }

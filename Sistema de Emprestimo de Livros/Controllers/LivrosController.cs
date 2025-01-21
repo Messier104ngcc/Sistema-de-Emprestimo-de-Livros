@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Sistema_de_Emprestimo_de_Livros.Dto.Livro;
 using Sistema_de_Emprestimo_de_Livros.Logs_System;
@@ -12,11 +13,13 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
     {
         private readonly ILivro _livro;
         private readonly ILogs _logs;
+        private readonly IMapper _mapper;
 
-        public LivrosController(ILivro livro, ILogs logs) 
+        public LivrosController(ILivro livro, ILogs logs, IMapper mapper) 
         {
             _livro = livro;
             _logs = logs;
+            _mapper = mapper;
         }
 
         public async Task<ActionResult<List<LivrosModel>>> Index()
@@ -72,6 +75,34 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
             return RedirectToAction("Index");
 		}
 
+        public async Task<ActionResult> Editar(int id)
+        {
+            try
+            {
+                if (id != null)
+                {
+                    var livros = await _livro.BuscarLivroID(id);
+                    var livroEdicaoDto = _mapper.Map<LivroEdicaoDto>(livros);
+                    return View(livroEdicaoDto);
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                _logs.RegistrarLogDeExcecao(ex);
+                TempData["MensagemInfo"] = "Erro ao conectar ao banco de dados. Verifique a conexão e tente novamente.";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logs.RegistrarLogDeExcecao(ex);
+                TempData["MensagemErro"] = "Erro inesperado. Contate o suporte.";
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public async Task<ActionResult> Cadastrar(LivroCriacaoDto livrosDto, IFormFile foto)
         {
@@ -124,5 +155,37 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
 				return View("Index");
 			}
 		}
-    }
+
+		[HttpPost]
+		public async Task<ActionResult> Editar(LivroEdicaoDto livroEdicaoDto, IFormFile? foto)
+		{
+			try
+			{
+				if (ModelState.IsValid)
+				{					
+					var livro = await _livro.Editar(livroEdicaoDto, foto);
+
+					TempData["MensagemSucesso"] = "Edição realizado com sucesso!";
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					TempData["MensagemSucesso"] = "Verifique os campos preenchidos!";
+					return View("Cadastro");
+				}
+			}
+			catch (SqlException ex)
+			{
+				_logs.RegistrarLogDeExcecao(ex);
+				TempData["MensagemInfo"] = "Erro ao conectar ao banco de dados. Verifique a conexão e tente novamente.";
+				return RedirectToAction("Index");
+			}
+			catch (Exception ex)
+			{
+				_logs.RegistrarLogDeExcecao(ex);
+				TempData["MensagemErro"] = "Erro inesperado. Contate o suporte.";
+				return RedirectToAction("Index");
+			}
+		}
+	}
 }

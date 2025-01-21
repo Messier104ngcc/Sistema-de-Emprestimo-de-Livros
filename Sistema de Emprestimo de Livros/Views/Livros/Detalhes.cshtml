@@ -14,8 +14,8 @@
 <h1 class="h3 mb-1 m-5 text-gray-800">Detalhes do Livro</h1>
 
 <div class="card shadow mt-2 row p-0 pe-lg-0 pt-lg-5 border shadow-lg m-5" style="background-color:  #F8F0E2">
-	<div class="row">
-		<div class="col-lg-3 m-3">
+	<div class="row mb-3">
+		<div class="col-lg-3 m-2">
             <div class="col">
                 <img src="@Model.Capa" class="img-fluid">
             </div>          
@@ -32,19 +32,34 @@
                 ​@Model.Descricao
             </p>
             <br />
-            <p class="lead">
-				Codigo ISBN : @Model.ISBN
-			</p>
-            <p class="lead">
-				Data de Cadastro : @Model.DataCadastro
-			</p>
-            <p class="lead">
-                Data de Alteração : @Model.DataAlteracao
-            </p>
-            <p class="lead">
-                Quantidade em Estoque : @Model.QuantidadeEstoque
-            </p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5 mb-lg-3">
+            <div class="row align-items-start mt-5">
+                <div class="col">
+                    <p class="lead">
+                        <i class="bi bi-upc-scan mx-2" data-bs-toggle="tooltip" title="Codigo ISBN"></i>
+                        @Model.ISBN
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="lead">
+                        <i class="bi bi-calendar3 mx-2" data-bs-toggle="tooltip" title="Data de cadastro"></i>
+                        @Model.DataCadastro.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="lead">
+                        <i class="bi bi-calendar2-check-fill mx-2" data-bs-toggle="tooltip" title="Data de alteração"></i>
+                        @Model.DataAlteracao.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+
+                <div class="col">
+                    <p class="lead">
+                        <i class="bi bi-box-seam-fill mx-2" data-bs-toggle="tooltip" title="Quantidade em estoque"></i> 
+                        @Model.QuantidadeEstoque
+                    </p>
+                </div>
+            </div>         
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5 m-2 mb-lg-3">
                 <button type="button" class="btn" style="background-color:  #E2CDA5 ">
                     <a class="text-dark text-decoration-none" asp-controller="Livros" asp-action="Index"><i class="bi bi-back mx-2"></i>Voltar</a>
                 </button>
@@ -54,3 +69,4 @@
 </div>
 
 
+<script src="/js/site.js" asp-append-version="true"></script>
