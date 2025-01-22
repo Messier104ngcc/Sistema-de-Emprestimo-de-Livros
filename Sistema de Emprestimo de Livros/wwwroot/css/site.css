@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+
+#title {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
+}

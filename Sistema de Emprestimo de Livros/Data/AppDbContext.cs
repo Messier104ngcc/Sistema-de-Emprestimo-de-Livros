@@ -11,7 +11,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Data
 
         }
 
-        //public DbSet<UsuarioModel> Usuarios { get; set; }
+        public DbSet<UsuariosModel> Usuarios { get; set; }
         //public DbSet<ClienteModel> Clientes { get; set; }
         //public DbSet<EnderecoModel> Enderecos { get; set; }
         public DbSet<LivrosModel> Livros { get; set; }

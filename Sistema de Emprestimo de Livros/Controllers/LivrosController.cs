@@ -5,7 +5,6 @@ using Sistema_de_Emprestimo_de_Livros.Dto.Livro;
 using Sistema_de_Emprestimo_de_Livros.Logs_System;
 using Sistema_de_Emprestimo_de_Livros.Models;
 using Sistema_de_Emprestimo_de_Livros.Respository.Service;
-using Sistema_de_Emprestimo_de_Livros.Services.LivrosServices;
 
 namespace Sistema_de_Emprestimo_de_Livros.Controllers
 {
