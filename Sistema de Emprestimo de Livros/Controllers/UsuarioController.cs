@@ -37,5 +37,10 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
                 return View("Index");
             }
         }
-    }
+
+		public IActionResult Cadastro()
+		{
+			return View();
+		}
+	}
 }

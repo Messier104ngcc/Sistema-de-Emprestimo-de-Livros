@@ -1,2 +1,124 @@
 ﻿@using Sistema_de_Emprestimo_de_Livros.Models
 @model IEnumerable<UsuariosModel>
+
+
+@section Styles {
+	<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/sb-admin-2.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/all.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="/css/NewCSS.css" asp-append-version="true" />
+}
+
+
+@if (TempData["MensagemSucesso"] != null)
+{
+	<div class="alert alert-success text-dark" role="alert">
+		@TempData["MensagemSucesso"]
+	</div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+	<div class="alert alert-danger text-dark" role="alert">
+		@TempData["MensagemErro"]
+	</div>
+}
+
+@if (TempData["MensagemInfo"] != null)
+{
+	<div class="alert alert-warning" role="alert">
+		@TempData["MensagemInfo"]
+	</div>
+}
+
+
+
+<div class="btn-box d-flex justify-content-between align-items-center mb-3">
+	<h3 class="text-black">Cadastro de Funcionários</h3>
+</div>
+
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3" style="background-color:  #F8F0E2">
+		<h6 class="m-0 font-weight-bold text-black">Registros</h6>
+	</div>
+	<div class="card-body overflow-auto" style="max-height: 650px; background-color:  #F8F0E2">
+		<div class="table-responsive">
+			<table class="table table-bordered text-black" id="dataTable livros" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="text-nowrap">Situação</th>
+						@* <th class="text-nowrap" style="width: 10%">Foto</th> *@
+						<th class="text-nowrap">Usuário</th>
+						<th class="text-nowrap">Nome</th>
+						<th class="text-nowrap">Estado</th>
+						<th class="text-nowrap">Email</th>						
+						<th class="text-nowrap">Data de cadastro</th>
+						<th class="text-nowrap">Ações</th>
+					</tr>
+				</thead>
+				<tbody id="table-body">
+
+					@if (Model != null)
+					{
+						@if (Model.Count() > 0)
+						{
+							@foreach (var usuario in Model)
+							{
+
+								<tr>
+									@if (usuario.Situação == true)
+									{
+										<td>
+											<i class="bi bi-check-circle-fill mx-2" style=" width: 25px; height: 25px; color: green"></i>Ativo
+										</td>
+									}
+									else
+									{
+										<td>
+											<i class="bi bi-dash-circle-fill mx-2" style=" width: 25px; height: 25px; color: red"></i>Desativado
+										</td>
+									}
+
+									<th scope="row"><i class="bi bi-people"></i> @usuario.Usuario</th>
+									<td>@usuario.NomeCompleto</td>
+									<td class="text-center">@usuario.Endereco.Estado</td>
+									<td><i class="bi bi-envelope-at"></i> @usuario.Email</td>
+									<td><i class="bi bi-calendar"></i> @usuario.DataCadastro.ToString("dd/MM/yyyy")</td>
+									<td class="text-nowrap">
+										<a class="btn text-dark" asp-action="Detalhes" asp-controller="Usuario" asp-route-id="@usuario.Id" style="background-color:  #E2CDA5 "><i class="bi bi-file-earmark-zip mx-2"></i>Detalhes</a>
+										<a class="btn text-light" asp-action="Editar" asp-controller="Usuario" asp-route-id="@usuario.Id" style="background-color:#1F2744 "><i class="bi bi-pencil mx-2"></i>Editar</a>
+									</td>
+								</tr>
+							}
+						}
+						else
+						{
+							<tr><td colspan="6" class="text-center">Sem clientes registrados!</td></tr>
+						}
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="btn-box d-flex justify-content-end align-items-center">
+	<a class="btn text-light" asp-action="Cadastro" asp-controller="Usuario" style="background-color:#1F2744 "><i class="bi bi-plus-circle mx-2"></i>Cadastrar novo Funcionário</a>
+</div>
+
+
+
+
+
+
+<script src="/js/datatables-demo.js" asp-append-version="true"></script>
+<script src="/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+<script src="/js/sb-admin-2.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.easing.min.js" asp-append-version="true"></script>
+<script src="/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+<script src="/js/jquery.min.js" asp-append-version="true"></script>
+<script src="/js/site.js" asp-append-version="true"></script>
+

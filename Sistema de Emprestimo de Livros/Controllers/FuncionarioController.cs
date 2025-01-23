@@ -20,8 +20,8 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
         {
             try
             {
-                var funcinarios = await _usuario.BuscarUsuarios(null);
-                return View(funcinarios);
+                var funcionarios = await _usuario.BuscarUsuarios(null);
+                return View(funcionarios);
             }
             catch (SqlException ex)
             {

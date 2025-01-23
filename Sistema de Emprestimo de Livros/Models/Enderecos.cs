@@ -3,13 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace Sistema_de_Emprestimo_de_Livros.Models
 {
-    public class EnderecoModel
+    public class Enderecos
     {
         [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public string Foto { get; set; }
+        public int Id { get; set; }    
 
         [Required]
         public string Logradouro { get; set; }

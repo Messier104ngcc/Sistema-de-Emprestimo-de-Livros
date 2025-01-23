@@ -33,7 +33,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Models
         public byte[] PasswordSalt { get; set; }
 
         [Required]
-        public EnderecoModel Endereco { get; set; }
+        public Enderecos Endereco { get; set; }
 
         //public ICollection<EmprestimoModel> Emprestimos { get; set; }
 
