@@ -4,7 +4,7 @@
     {
         Manha = 1,
         Tarde = 2,
-        Madrugada = 3,
+        Noite = 3,
         Cliente = 0
     }
 }

@@ -23,6 +23,8 @@ namespace Sistema_de_Emprestimo_de_Livros.Dto.Usuario
 		[Required(ErrorMessage = "Selecione o turno!")]
 		public TurnoEnum Turno { get; set; }
 
+		public PerfilEnum Perfil { get; set; }
+
 		[Required(ErrorMessage = "Digite o logradouro!")]
 		public string Logradouro { get; set; }
 

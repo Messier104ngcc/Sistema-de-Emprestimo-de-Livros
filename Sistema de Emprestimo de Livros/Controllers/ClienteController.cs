@@ -16,7 +16,7 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
             _logs = log;
         }
 
-        public async Task<ActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? id)
         {
             try
             {

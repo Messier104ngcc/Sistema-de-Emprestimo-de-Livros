@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Sistema_de_Emprestimo_de_Livros.Enums;
 using Sistema_de_Emprestimo_de_Livros.Logs_System;
 using Sistema_de_Emprestimo_de_Livros.Respository.Interface;
 
@@ -38,8 +39,15 @@ namespace Sistema_de_Emprestimo_de_Livros.Controllers
             }
         }
 
-		public IActionResult Cadastro()
+		public IActionResult Cadastro(int? id)
 		{
+            ViewBag.Perfil = PerfilEnum.Administrador;
+
+            if (id != null)
+            {
+				ViewBag.Perfil = PerfilEnum.Cliente;
+			}
+
 			return View();
 		}
 	}
